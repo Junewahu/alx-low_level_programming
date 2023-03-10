@@ -1,40 +1,46 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 /**
-*main - adds positive numbers
-*@argc: number of arguments
-*@argv: array of arguments
-*Return: 0 on success, 1 on failure
-*/
+ * main - entry point
+ * Description: adds 2 positive numbers
+ * @argc: arguement count
+ * @argv: argument array
+ * Return: 0
+ */
 
-/*
-1. The main function takes in the number of arguments and an array of strings.
-2. The first for loop iterates through the arguments.
-3. The second for loop iterates through each character of the argument.
-4. If the character is not a digit, the program prints “Error” and returns 1.
-5. If the character is a digit, the program adds the number to the sum.
-6. The program prints the sum and returns 0.
-*/
 int main(int argc, char *argv[])
 {
-	int i, j, sum = 0;
+	int sum;
+	int num;
+	int arg_index;
+	int char_index;
 
-	for (i = 1; i < argc; i++)
+	sum = 0;
+	if (argc == 1)
 	{
-		for (j = 0; argv[i][j] != '\0'; j++)
+		printf("0\n");
+		return (0);
+	}
+	for (arg_index = 1; arg_index < argc; arg_index++)
+	{
+		for (char_index = 0; argv[arg_index][char_index] != '\0'; char_index++)
 		{
-			if (argv[i][j] < '0' || argv[i][j] > '9')
+			if (!isdigit(argv[arg_index][char_index]))
 			{
 				printf("Error\n");
 				return (1);
 			}
 		}
-
-		sum += atoi(argv[i]);
+		num = atoi(argv[arg_index]);
+		if (num < 0)
+		{
+			printf("Error\n");
+			return (1);
+		}
+		sum += num;
 	}
-
 	printf("%d\n", sum);
-
 	return (0);
 }
