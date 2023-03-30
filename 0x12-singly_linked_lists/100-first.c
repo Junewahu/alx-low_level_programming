@@ -1,15 +1,13 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include "lists.h"
+
+void __attribute__((constructor)) hare(void);
 
 /**
-* printFirst - a func that prints You're beat!
-* and yet, you must allow,\nI bore my house upon
-* my back!\n before the main function is executed
-*/
-
-void printFirst(void)
+ * hare - Prints a string before the
+ *   main function is executed.
+ */
+void hare(void)
 {
-	printf("You're beat! and yet, you must allow,\n");
-	printf("I bore my house upon my back!\n");
+printf("You're beat! and yet, you must allow,\n"
+"I bore my house upon my back!\n");
 }
